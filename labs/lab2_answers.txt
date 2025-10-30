@@ -1,0 +1,37 @@
+-- Lab Session 2
+--
+-- Sample answers
+
+-- Q1
+
+triangleArea :: Float -> Float -> Float -> Float
+
+triangleArea a b c =
+  sqrt (s*(s-a)*(s-b)*(s-c))
+  where s = (a+b+c)/2
+
+
+-- Q2
+isSum:: (Eq i, Num i) => i -> i -> i -> Bool
+
+isSum a b c
+   | a == b + c = True
+   | b == a + c = True
+   | c == a + b = True
+   | otherwise = False
+   
+
+-- Q3
+
+validTriangle:: (Num i, Ord i) => i -> i -> i -> Bool
+
+validTriangle a b c
+  | a >= b && a >= c && a < (b + c) = True
+  | b >= a && b >= c && b < (a + c) = True
+  | c >= a && c >= b && c < (a + b) = True
+  | otherwise = False
+
+
+triangleArea2 :: Float -> Float -> Float -> Float
+
+triangleArea2 a b c = if (validTriangle a b c) then (triangleArea a b c)  else error "Not a triangle"
